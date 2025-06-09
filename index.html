@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortLab - Crea tu portafolio perfecto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>PortLab</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#gallery">Ejemplos</a></li>
+                <li><a href="#features">Características</a></li>
+                <li><a href="#pricing">Precios</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Crea tu portafolio perfecto</h1>
+            <p class="hero-subtitle">Elige un diseño único, personalízalo y empieza a destacar</p>
+            <button class="cta-button">Ver Diseños</button>
+        </div>
+        <div class="hero-scroll">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Ejemplos de Portafolios</h2>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-track">
+                        <div class="portfolio-card">
+                            <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070');"></div>
+                            <div class="portfolio-overlay">
+                                <h3>Fotografía Urbana</h3>
+                                <p>Portafolio para fotógrafo especializado en paisajes urbanos</p>
+                                <button class="portfolio-btn">Ver más</button>
+                            </div>
+                        </div>
+                        <div class="portfolio-card">
+                            <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1928');"></div>
+                            <div class="portfolio-overlay">
+                                <h3>Diseño Gráfico</h3>
+                                <p>Showcase de trabajos creativos y branding</p>
+                                <button class="portfolio-btn">Ver más</button>
+                            </div>
+                        </div>
+                        <div class="portfolio-card">
+                            <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1554080353-a576cf803bda?q=80&w=2034');"></div>
+                            <div class="portfolio-overlay">
+                                <h3>Arte Digital</h3>
+                                <p>Galería de ilustraciones y arte conceptual</p>
+                                <button class="portfolio-btn">Ver más</button>
+                            </div>
+                        </div>
+                        <div class="portfolio-card">
+                            <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070');"></div>
+                            <div class="portfolio-overlay">
+                                <h3>Arquitectura</h3>
+                                <p>Proyectos arquitectónicos y visualizaciones 3D</p>
+                                <button class="portfolio-btn">Ver más</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">¿Por qué elegir PortLab?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Personalización total</h3>
+                    <p>Adapta cada detalle a tu estilo único. Colores, tipografías, layouts y más.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Diseño profesional</h3>
+                    <p>Creamos tu web desde cero, adaptada a lo que necesitas, sin usar plantillas. Cada proyecto es único y diseñado tras una reunión contigo.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Listo en segundos</h3>
+                    <p>Publica y comparte tu portafolio al instante. Sin complicaciones técnicas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Planes que se adaptan a ti</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Básico</h3>
+                    <div class="price">
+                        <span class="currency">€</span>
+                        <span class="amount">39</span>
+                        <span class="period">pago único</span>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Reunión inicial para definir la web</li>
+                        <li><i class="fas fa-check"></i> Diseño personalizado hecho por nuestro equipo</li>
+                        <li><i class="fas fa-check"></i> Web simple de una página</li>
+                        <li><i class="fas fa-check"></i> Sección de contacto incluida</li>
+                        <li><i class="fas fa-check"></i> Tiempo estimado de entrega: 3-5 días</li>
+                    </ul>
+                    <p class="pricing-note">Dominio no incluido (precio varía según nombre).</p>
+                    <button class="pricing-btn">Comprar ahora</button>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="featured-badge">Más popular</div>
+                    <h3>Profesional</h3>
+                    <div class="price">
+                        <span class="currency">€</span>
+                        <span class="amount">59</span>
+                        <span class="period">pago único</span>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Reunión inicial para definir la web</li>
+                        <li><i class="fas fa-check"></i> Diseño personalizado hecho por nuestro equipo</li>
+                        <li><i class="fas fa-check"></i> Web con hasta 3 secciones personalizadas</li>
+                        <li><i class="fas fa-check"></i> Galería de fotos/vídeos opcional</li>
+                        <li><i class="fas fa-check"></i> Formulario de contacto avanzado</li>
+                        <li><i class="fas fa-check"></i> Tiempo estimado de entrega: 5-7 días</li>
+                    </ul>
+                    <p class="pricing-note">Dominio no incluido (precio varía según nombre).</p>
+                    <button class="pricing-btn">Comprar ahora</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Empresa</h3>
+                    <div class="price">
+                        <span class="currency">€</span>
+                        <span class="amount">99</span>
+                        <span class="period">pago único</span>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Reunión inicial para definir la web</li>
+                        <li><i class="fas fa-check"></i> Diseño personalizado hecho por nuestro equipo</li>
+                        <li><i class="fas fa-check"></i> Web completa con varias páginas</li>
+                        <li><i class="fas fa-check"></i> Galería multimedia y diseño detallado</li>
+                        <li><i class="fas fa-check"></i> Secciones ilimitadas</li>
+                        <li><i class="fas fa-check"></i> Tiempo estimado de entrega: 7-10 días</li>
+                    </ul>
+                    <p class="pricing-note">Dominio no incluido (precio varía según nombre).</p>
+                    <button class="pricing-btn">Comprar ahora</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial active">
+                    <div class="testimonial-content">
+                        <p>"PortLab transformó completamente mi presencia online. Conseguí 3 nuevos clientes en la primera semana."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>María González</h4>
+                                <span>Fotógrafa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"La facilidad de uso es increíble. En menos de una hora tenía mi portafolio listo y profesional."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Carlos Ruiz</h4>
+                                <span>Diseñador Gráfico</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"Los templates son espectaculares. Mi trabajo nunca se había visto tan profesional."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Ana Martín</h4>
+                                <span>Ilustradora</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-text">
+                    <h2>¿Listo para mostrar tu talento al mundo?</h2>
+                    <p>Únete a miles de creativos que ya están destacando con PortLab</p>
+                    <button class="contact-cta">Empezar ahora</button>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Tu email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Cuéntanos sobre tu proyecto" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Enviar mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>PortLab</h3>
+                    <p>Creando portafolios extraordinarios desde 2023</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Producto</h4>
+                        <ul>
+                            <li><a href="#features">Características</a></li>
+                            <li><a href="#pricing">Precios</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Soporte</h4>
+                        <ul>
+                            <li><a href="#contact">Contacto</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Síguenos</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 PortLab. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
