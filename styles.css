@@ -1,0 +1,1286 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #000;
+    overflow-x: hidden;
+    opacity: 0; /* Start with opacity 0 for fade-in effect */
+    padding-top: 70px; /* reserve space for fixed navbar so content isn't hidden on mobile */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Rajdhani', sans-serif; /* Use Rajdhani for headings */
+    font-weight: 700;
+    color: #fff; /* Default heading color */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95); /* Slightly less opaque by default */
+    backdrop-filter: blur(8px); /* Slightly less blur */
+    z-index: 1000;
+    transition: all 0.4s ease; /* Smoother transition */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Subtle shadow */
+}
+
+.navbar.scrolled {
+    background: rgba(0, 0, 0, 0.98); /* More opaque when scrolled */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.7); /* More prominent shadow */
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-logo h2 {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.6rem; /* Slightly larger */
+    letter-spacing: 1px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    z-index: 1001; /* ensure mobile menu sits above content */
+}
+
+.nav-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative; /* Needed for underline effect */
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff4444;
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #ff4444;
+}
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px; /* Easier to click */
+    transition: transform 0.3s ease;
+}
+
+.hamburger span {
+    width: 28px; /* Slightly wider */
+    height: 4px; /* Slightly thicker */
+    background: #fff;
+    margin: 4px 0; /* Slightly more space */
+    transition: 0.4s; /* Slower transition */
+    border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: flex-start; /* Keep aligned to top */
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding-top: 25vh; /* Increased padding to push content down */
+    padding-bottom: 10vh; /* Add some bottom padding */
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%; /* Extend height for parallax */
+    background-image: url('/hero-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; /* Center the background */
+    z-index: -2;
+}
+
+/* Add back the generated grid overlay */
+.hero-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.2; /* Slightly less opaque */
+    z-index: 0; /* Place above gradient/overlay but below content */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.7) 80%); /* Darker overlay */
+    z-index: -1;
+}
+
+.hero-content {
+    z-index: 1;
+    max-width: 900px; /* Slightly wider */
+    padding: 0 20px;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Add text shadow for contrast */
+}
+
+.hero-title {
+    font-size: clamp(3.5rem, 9vw, 7rem); /* Larger font size */
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 1.5rem; /* More space */
+    line-height: 1.1;
+    letter-spacing: -3px; /* Tighter letter spacing */
+}
+
+.hero-subtitle {
+    font-size: clamp(1.3rem, 3.5vw, 1.6rem); /* Larger font size */
+    color: #ccc;
+    margin-bottom: 3rem; /* More space */
+    font-weight: 400;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+
+.cta-button, .contact-cta {
+    background: linear-gradient(45deg, #ff4444, #ff6b6b); /* Gradient button */
+    color: #fff;
+    border: none;
+    padding: 18px 40px;
+    font-size: 1.2rem; /* Larger font */
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1; /* Ensure it's above overlay effects */
+    box-shadow: 0 5px 15px rgba(255, 68, 68, 0.3); /* Initial shadow */
+}
+
+.cta-button::before, .contact-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); /* Shinier effect */
+    transition: left 0.6s ease; /* Slower shine */
+    z-index: -1; /* Below button text */
+}
+
+.cta-button:hover::before, .contact-cta:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover, .contact-cta:hover {
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: 0 12px 35px rgba(255, 68, 68, 0.5); /* Stronger shadow */
+}
+
+.hero-scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.8); /* Slightly translucent */
+    font-size: 1.8rem; /* Larger icon */
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-15px); } /* More pronounced bounce */
+    60% { transform: translateX(-50%) translateY(-8px); }
+}
+
+/* Section Styles */
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4rem;
+    color: #fff;
+    position: relative;
+    letter-spacing: -1px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px; /* Lower underline */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px; /* Wider underline */
+    height: 5px; /* Thicker underline */
+    background: linear-gradient(90deg, transparent, #ff4444, transparent); /* Gradient underline */
+    border-radius: 2.5px;
+}
+
+/* Gallery Section */
+.gallery {
+    padding: 100px 0;
+    background: #111;
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    padding: 20px 0; /* Add padding for subtle overflow */
+    /* box-shadow: inset 0 0 20px rgba(0,0,0,0.5); Subtle inner shadow */
+}
+
+.carousel {
+    overflow: visible; /* Allow cards to peek out */
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.6s ease; /* Smoother slide */
+    gap: 30px;
+    padding: 0 10px; /* Add padding to show part of the next/prev card */
+}
+
+.portfolio-card {
+    min-width: 350px;
+    width: 350px; /* Explicit width */
+    height: 400px;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Added box-shadow transition */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Initial shadow */
+    border: 1px solid rgba(255,255,255,0.05); /* Subtle border */
+}
+
+.portfolio-card:hover {
+    transform: translateY(-10px) scale(1.02); /* Lift and slightly scale */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5); /* Stronger shadow on hover */
+}
+
+.portfolio-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover; /* Ensure image covers the card */
+    background-position: center;
+    position: relative;
+    transition: transform 0.6s ease; /* Image scaling transition */
+}
+
+/* Remove placeholder gradient if using image */
+/*
+.portfolio-image::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(255,255,255,0.1); /* Less opaque */
+    border-radius: 50%;
+    backdrop-filter: blur(8px); /* Less blur */
+    z-index: 1; /* Above placeholder gradient */
+}
+*/
+
+.portfolio-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9) 80%); /* Darker overlay */
+    color: #fff;
+    padding: 30px 20px 20px;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+    z-index: 2; /* Above the image */
+}
+
+.portfolio-card:hover .portfolio-overlay {
+    transform: translateY(0);
+}
+
+.portfolio-overlay h3 {
+    font-size: 1.4rem; /* Slightly larger */
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.portfolio-overlay p {
+    font-size: 0.95rem; /* Slightly larger */
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.portfolio-btn {
+    background: transparent;
+    border: 2px solid #ff4444;
+    color: #ff4444;
+    padding: 10px 25px; /* More padding */
+    border-radius: 30px; /* More rounded */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 1rem; /* Slightly larger */
+}
+
+.portfolio-btn:hover {
+    background: #ff4444;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4); /* Add shadow on hover */
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.15); /* More visible */
+    border: none;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.4rem; /* Larger icon */
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 5; /* Ensure buttons are above cards */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.carousel-btn:hover {
+    background: rgba(255,255,255,0.3); /* Darker on hover */
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev {
+    left: 0px; /* Align to edge of container */
+}
+
+.carousel-btn.next {
+    right: 0px; /* Align to edge of container */
+}
+
+/* Features Section */
+.features {
+    padding: 100px 0;
+    background: #0a0a0a; /* Darker background */
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust min width */
+    gap: 40px;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    background: linear-gradient(135deg, #181818 0%, #282828 100%); /* Darker gradient */
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.08); /* More visible border */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.feature-card:hover {
+    transform: translateY(-12px); /* More pronounced lift */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, #ff4444, #ff6b6b); /* Gradient background */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px; /* More space below icon */
+    font-size: 2.2rem; /* Larger icon */
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(255, 68, 68, 0.3);
+}
+
+.feature-card h3 {
+    color: #fff;
+    font-size: 1.5rem; /* Slightly larger */
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    color: #ccc;
+    line-height: 1.7; /* More line height */
+    font-size: 1rem;
+}
+
+/* Pricing Section */
+.pricing {
+    padding: 100px 0;
+    background: #111;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust min width */
+    gap: 30px;
+    margin-top: 2rem;
+}
+
+.pricing-card {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.pricing-card.featured {
+    background: linear-gradient(135deg, #ff4444 0%, #ff6b6b 100%);
+    transform: scale(1.05);
+    border: none;
+    box-shadow: 0 15px 40px rgba(255, 68, 68, 0.5); /* Stronger shadow for featured */
+}
+
+/* Remove duplicate ::before from featured card */
+/*
+.pricing-card.featured::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, #ff4444, #ff6b6b);
+    border-radius: 20px;
+    z-index: -1;
+}
+*/
+
+.pricing-card:hover:not(.featured) { /* Apply hover only if not featured */
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+.pricing-card.featured:hover { /* Different hover for featured */
+    transform: scale(1.06) translateY(-12px); /* Scale up more and lift */
+    box-shadow: 0 20px 50px rgba(255, 68, 68, 0.7); /* Even stronger shadow */
+}
+
+.featured-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.pricing-card h3 {
+    color: #fff;
+    font-size: 1.6rem; /* Slightly larger */
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.price {
+    margin-bottom: 30px;
+}
+
+.currency {
+    color: #ff4444;
+    font-size: 1.8rem; /* Larger */
+    font-weight: 600;
+}
+
+.pricing-card.featured .currency {
+    color: #fff;
+}
+
+.amount {
+    color: #fff;
+    font-size: 3.5rem; /* Larger */
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.period {
+    color: #ccc;
+    font-size: 1.1rem; /* Slightly larger */
+}
+
+.pricing-card.featured .period {
+    color: rgba(255,255,255,0.8);
+}
+
+.features-list {
+    list-style: none;
+    margin-bottom: 30px;
+    text-align: left;
+    display: inline-block;
+    padding: 0 10px; /* Add some horizontal padding */
+}
+
+.features-list li {
+    color: #ccc;
+    margin-bottom: 12px; /* More space between items */
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.pricing-card.featured .features-list li {
+    color: rgba(255,255,255,0.9);
+}
+
+.features-list i {
+    color: #ff4444;
+    font-size: 1rem; /* Match text size */
+    margin-top: 4px; /* Adjust vertical alignment */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.pricing-card.featured .features-list i {
+    color: #fff;
+}
+
+.pricing-note {
+    color: #888;
+    font-size: 0.9rem;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.pricing-card.featured .pricing-note {
+    color: rgba(255,255,255,0.7);
+}
+
+.pricing-btn {
+    background: transparent;
+    border: 2px solid #ff4444;
+    color: #ff4444;
+    padding: 14px 30px; /* More padding */
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    width: 100%;
+    font-size: 1.1rem; /* Slightly larger */
+}
+
+.pricing-card.featured .pricing-btn {
+    background: #fff;
+    border: 2px solid #fff;
+    color: #ff4444;
+}
+
+.pricing-btn:hover:not(.featured .pricing-btn) {
+    background: #ff4444;
+    color: #fff;
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: 0 8px 20px rgba(255, 68, 68, 0.4);
+}
+
+.pricing-card.featured .pricing-btn:hover {
+    background: transparent;
+    color: #fff;
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: 0 8px 20px rgba(255, 68, 68, 0.4);
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 100px 0;
+    background: #0a0a0a;
+}
+
+.testimonials-slider {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.testimonial {
+    display: none;
+    text-align: center;
+    opacity: 0;
+    /* Transition is handled by GSAP in script.js */
+}
+
+.testimonial.active {
+    display: block;
+    /* Opacity and transform handled by GSAP */
+}
+
+.testimonial-content {
+    background: linear-gradient(135deg, #181818 0%, #282828 100%);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.testimonial-content p {
+    color: #fff;
+    font-size: 1.3rem; /* Slightly larger */
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-style: italic;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.author-info h4 {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.author-info span {
+    color: #ff4444;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.testimonial-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent; /* Add a border for active state */
+}
+
+.dot.active {
+    background: #ff4444;
+    transform: scale(1.3); /* Scale up more when active */
+    border-color: rgba(255,255,255,0.5); /* White border */
+}
+
+/* Contact Section */
+.contact {
+    padding: 100px 0;
+    background: #111;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.contact-text h2 {
+    color: #fff;
+    font-size: clamp(2.5rem, 4.5vw, 3.5rem); /* Adjust clamp values */
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.contact-text p {
+    color: #ccc;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.contact-form {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(0,0,0,0.6); /* Darker input background */
+    border: 1px solid rgba(255,255,255,0.15); /* More subtle border */
+    border-radius: 10px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff4444;
+    box-shadow: 0 0 0 3px rgba(255,68,68,0.3); /* Wider focus shadow */
+    background: rgba(0,0,0,0.8); /* Darker on focus */
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #777; /* Darker placeholder */
+}
+
+.submit-btn {
+    background: linear-gradient(45deg, #ff4444, #ff6b6b); /* Gradient button */
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    width: 100%;
+    font-size: 1.1rem;
+    box-shadow: 0 5px 15px rgba(255, 68, 68, 0.3);
+}
+
+.submit-btn:hover {
+    background: linear-gradient(45deg, #ff3333, #ff5b5b); /* Darker gradient on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 68, 68, 0.5);
+}
+
+.submit-btn:disabled {
+    background: #555;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Contact Actions */
+.contact-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* stack buttons vertically on mobile */
+}
+
+/* Button style for contact links */
+.contact-btn {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    padding: 12px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.06);
+    width: 100%; /* make contact buttons full width on mobile for easier tapping */
+    justify-content: center;
+    padding: 14px 18px;
+}
+
+/* Individual brand colors (subtle) */
+.contact-btn.mail { background: linear-gradient(90deg,#e84a4a,#ff6b6b); }
+/* .contact-btn.ig { background: linear-gradient(90deg,#833ab4,#fd1d1d,#fcb045); } */ /* removed - Instagram */
+.contact-btn.linkedin { background: linear-gradient(90deg,#0077b5,#0a66c2); }
+
+
+/* Footer */
+.footer {
+    background: transparent; /* Removed solid black background */
+    padding: 0; /* Remove extra space under contact */
+    border-top: none; /* Remove dividing line */
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr; /* Adjust logo column width */
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-logo h3 {
+    color: #fff;
+    font-size: 1.6rem; /* Slightly larger */
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.footer-logo p {
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive columns */
+    gap: 30px;
+}
+
+.footer-column h4 {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0; /* Ensure no default padding */
+}
+
+.footer-column ul li {
+    margin-bottom: 10px; /* More space */
+}
+
+.footer-column ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 1rem;
+}
+
+.footer-column ul li a:hover {
+    color: #ff4444;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px; /* Add space above social icons */
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.social-links a:hover {
+    background: #ff4444;
+    transform: translateY(-3px) rotate(5deg); /* Lift and rotate slightly */
+    box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    /* Styles are mostly handled in JS for dynamic creation */
+    /* Ensure base styles are here */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Initially hidden */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; /* Add transform transition */
+}
+
+.scroll-to-top:hover {
+    background: #ff3333;
+    transform: translateY(-3px); /* Lift on hover */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Copy confirmation toast */
+.copy-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 80px;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    font-weight: 600;
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+    z-index: 1200;
+    pointer-events: none;
+    border: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.95rem;
+}
+
+.copy-toast.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px; /* Align below navbar height */
+        flex-direction: column;
+        background-color: rgba(0,0,0,0.98); /* Darker background for menu */
+        width: 100%;
+        text-align: center;
+        transition: left 0.4s ease; /* Smoother slide */
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        height: calc(100vh - 70px); /* Make menu fill remaining height */
+        overflow-y: auto; /* Add scroll for long menus */
+        z-index: 999; /* Below navbar */
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu li {
+        margin: 15px 0; /* More space */
+    }
+
+    .nav-menu a {
+        font-size: 1.2rem; /* Larger links in mobile menu */
+    }
+    
+    .nav-menu a::after {
+        bottom: -8px; /* Adjust underline position */
+    }
+
+    .hero {
+        padding-top: 20vh;
+        padding-bottom: 8vh;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+        letter-spacing: -1px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 3rem;
+    }
+
+    .carousel-container {
+        padding: 20px 0; /* Ensures cards are visible at edges */
+    }
+    .carousel-track {
+        justify-content: flex-start; /* Align cards to the start */
+        gap: 20px; /* Smaller gap */
+        padding: 0 20px; /* Increased padding to show more of prev/next card */
+    }
+    .portfolio-card {
+        min-width: 80%; /* Make cards take up more width on smaller screens */
+        width: 80%; /* Override fixed width */
+        max-width: 350px; /* But don't exceed max if screen is very wide */
+        height: 350px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contact-text h2 {
+        font-size: 2rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        text-align: center; /* Center footer links */
+    }
+     .footer-column ul {
+        padding: 0;
+    }
+    .footer-column ul li {
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center; /* Center social icons */
+    }
+
+    .carousel-btn {
+        /* Hide buttons on small screens, rely on swipe */
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .hero {
+        padding-top: 18vh;
+        padding-bottom: 6vh;
+    }
+
+    .hero-title {
+        font-size: 2.3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+     .cta-button, .contact-cta {
+        padding: 15px 30px;
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+    }
+    .section-title::after {
+        width: 80px; /* Smaller underline */
+        height: 4px;
+    }
+
+    .carousel-track {
+        padding: 0 15px; /* Adjust padding for very small screens */
+    }
+    .portfolio-card {
+        min-width: 90%; /* Even larger proportion on very small screens */
+        width: 90%;
+        height: 300px;
+    }
+     .portfolio-overlay h3 {
+         font-size: 1.2rem;
+     }
+     .portfolio-overlay p {
+         font-size: 0.9rem;
+     }
+     .portfolio-btn {
+         padding: 8px 18px;
+         font-size: 0.9rem;
+     }
+
+    .feature-card {
+        padding: 30px 20px;
+    }
+     .feature-icon {
+         width: 60px;
+         height: 60px;
+         font-size: 1.8rem;
+         margin-bottom: 20px;
+     }
+     .feature-card h3 {
+         font-size: 1.3rem;
+     }
+     .feature-card p {
+         font-size: 0.95rem;
+     }
+
+    .pricing-card {
+        padding: 30px 20px;
+    }
+    .pricing-card h3 {
+        font-size: 1.4rem;
+    }
+    .amount {
+        font-size: 3rem;
+    }
+    .period {
+        font-size: 1rem;
+    }
+    .features-list li {
+        font-size: 0.95rem;
+    }
+    .pricing-btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    .testimonial-content {
+        padding: 30px 20px;
+    }
+    .testimonial-content p {
+        font-size: 1.1rem;
+    }
+    .testimonial-author {
+        flex-direction: column; /* Stack author info */
+        gap: 5px;
+    }
+
+    .contact-form {
+        padding: 30px 20px;
+    }
+    .contact-text h2 {
+        font-size: 1.8rem;
+    }
+     .form-group input,
+     .form-group textarea {
+         padding: 12px 15px;
+         font-size: 0.95rem;
+     }
+     .submit-btn {
+         padding: 12px 25px;
+         font-size: 1rem;
+     }
+
+    .footer-content {
+        gap: 20px;
+    }
+    .footer-logo h3 {
+        font-size: 1.4rem;
+    }
+    .footer-column h4 {
+        font-size: 1rem;
+    }
+    .footer-column ul li a {
+        font-size: 0.95rem;
+    }
+     .social-links {
+         gap: 10px;
+     }
+     .social-links a {
+         width: 35px;
+         height: 35px;
+         font-size: 1rem;
+     }
+     .footer-bottom {
+         font-size: 0.8rem;
+     }
+}
