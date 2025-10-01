@@ -13,7 +13,16 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <h2>PortLab</h2>
+                <a href="#hero" class="logo-link" aria-label="PortLab">
+                    <span class="logo-mark" aria-hidden="true">
+                        <!-- simple SVG mark -->
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+                            <rect x="2" y="2" width="20" height="20" rx="4" fill="#FF4444"/>
+                            <path d="M7 12h10M7 8h6M7 16h8" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <h2>PortLab</h2>
+                </a>
             </div>
             <ul class="nav-menu">
                 <li><a href="#hero">Inicio</a></li>
@@ -37,7 +46,7 @@
         <div class="hero-content">
             <h1 class="hero-title">Crea tu portafolio perfecto</h1>
             <p class="hero-subtitle">Elige un diseño único, personalízalo y empieza a destacar</p>
-            <button class="cta-button">Ver Diseños</button>
+            <!-- CTA removed -->
         </div>
         <div class="hero-scroll">
             <i class="fas fa-chevron-down"></i>
@@ -144,7 +153,7 @@
             <div class="testimonials-slider">
                 <div class="testimonial active">
                     <div class="testimonial-content">
-                        <p>"Trabajar con PortLab fue muy práctico: definimos el brief en una llamada de una hora, recibí una propuesta en 5 días y en 2 semanas ya tenía la web publicada. Desde entonces he recibido solicitudes para 2 sesiones de marca y una colaboración editorial."</p>
+                        <p>\"Trabajar con PortLab fue muy práctico: definimos el brief en una llamada de una hora, recibí una propuesta en 5 días y en 2 semanas ya tenía la web publicada. Desde entonces he recibido solicitudes para 2 sesiones de marca y una colaboración editorial.\"</p>
                         <div class="testimonial-author">
                             <div class="author-info">
                                 <h4>María González</h4>
@@ -155,7 +164,7 @@
                 </div>
                 <div class="testimonial">
                     <div class="testimonial-content">
-                        <p>"No soy muy técnico y aprecié la comunicación clara: hicieron pruebas en staging, me enseñaron a gestionar contenidos y adaptaron el diseño a mi identidad de marca. Ahora recibo consultas reales desde la página de contacto."</p>
+                        <p>\"No soy muy técnico y aprecié la comunicación clara: hicieron pruebas en staging, me enseñaron a gestionar contenidos y adaptaron el diseño a mi identidad de marca. Ahora recibo consultas reales desde la página de contacto.\"</p>
                         <div class="testimonial-author">
                             <div class="author-info">
                                 <h4>Carlos Ruiz</h4>
@@ -166,7 +175,7 @@
                 </div>
                 <div class="testimonial">
                     <div class="testimonial-content">
-                        <p>"Me gustó que no usaran plantillas genéricas: adaptaron la navegación para que mis series de ilustraciones se vieran cronológicas y optimizaron las imágenes para carga rápida. El resultado fue mucho más limpio y profesional de lo que esperaba."</p>
+                        <p>\"Me gustó que no usaran plantillas genéricas: adaptaron la navegación para que mis series de ilustraciones se vieran cronológicas y optimizaron las imágenes para carga rápida. El resultado fue mucho más limpio y profesional de lo que esperaba.\"</p>
                         <div class="testimonial-author">
                             <div class="author-info">
                                 <h4>Ana Martín</h4>
@@ -193,9 +202,12 @@
                     <p>Únete a miles de creativos que ya están destacando con PortLab</p>
                 </div>
                 <div class="contact-actions">
-                    <a class="contact-btn mail" href="mailto:daniel.portlab@gmail.com?subject=Quiero%20mi%20portafolio" aria-label="Enviar correo" data-email="daniel.portlab@gmail.com">
-                        <i class="fas fa-envelope"></i> Gmail
-                    </a>
+                    <div class="mail-row">
+                        <button class="contact-btn mail" type="button" aria-label="Copiar correo" data-email="daniel.portlab@gmail.com">
+                            <i class="fas fa-envelope"></i> Gmail
+                        </button>
+                        <span class="email-text" aria-hidden="false">daniel.portlab@gmail.com</span>
+                    </div>
                     <a class="contact-btn linkedin" href="https://www.linkedin.com/company/portlab-es/about/" target="_blank" rel="noopener" aria-label="LinkedIn">
                         <i class="fab fa-linkedin"></i> LinkedIn
                     </a>
